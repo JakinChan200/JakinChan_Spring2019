@@ -4,7 +4,8 @@ package textExcel;
 
 public class Spreadsheet implements Grid{
 	private int row, col;
-
+	private int[][] spreadsheet = new int[20][12];
+	
 	public Spreadsheet() {
 		int[] rows = new int[20];
 	}
