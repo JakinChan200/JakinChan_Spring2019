@@ -5,8 +5,13 @@
  */
 package textExcel;
 
-public class EmptyCell {
-	public String abbreviateCellText() {
+public class EmptyCell implements Cell{
+	
+	public EmptyCell() {
+		
+	}
+	
+	public String abbreviatedCellText() {
 		return "";
 	}
 	

@@ -4,15 +4,22 @@ package textExcel;
 
 public class Spreadsheet implements Grid{
 	private int row, col;
-	private int[][] spreadsheet = new int[20][12];
+	private Cell[][] sheet;
 	
 	public Spreadsheet() {
-		int[] rows = new int[20];
+		row = 20;
+		col = 12;
+		sheet = new Cell [row][col];
+		for(int rows = 0; rows < row; rows++) {
+			for(int cols = 0; cols < col; cols++) {
+				sheet[rows][cols] = new EmptyCell();
+			}
+		}		
 	}
 	
 	@Override
 	public String processCommand(String command){
-		return null;
+		return "";
 	}
 
 	@Override
