@@ -39,7 +39,24 @@ public class Spreadsheet implements Grid{
 
 	@Override
 	public String getGridText(){
-		// TODO Auto-generated method stub
-		return null;
+		String grid = "  ";
+		for(int i = 0; i < col; i++) {
+			grid += "|" + (char)(i + 'A') + "         ";
+		}
+ 		
+		for(int i = 1; i <= row; i++) {
+			if((i - 10) < 0) {
+				grid += "|\n" + i + " ";
+			}else {
+				grid += "|\n" + i;
+			}
+			
+			for(int j = 0; j < col; j++) {
+				grid += "|          ";
+			}
+		}
+		grid += "|";
+		System.out.println(grid);
+		return grid;
 	}
 }
