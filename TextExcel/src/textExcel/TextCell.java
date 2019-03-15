@@ -14,14 +14,14 @@ public class TextCell implements Cell{
 				text += " ";
 			}
 		}else {
-			text = text.substring(0, 9);
+			text = text.substring(0, 10);
 		}
 		return text;
 	}
 
 	@Override
 	public String fullCellText() {
-		return "";
+		return text;
 	}
 
 }

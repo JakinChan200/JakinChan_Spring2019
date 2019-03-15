@@ -19,7 +19,16 @@ public class Spreadsheet implements Grid{
 	
 	@Override
 	public String processCommand(String command){
-		return "";
+		command = command.toLowerCase();
+		if(command.length() <= 3) {
+			return sheet[Integer.parseInt(command.substring(1))][command.charAt(0)-65].fullCellText();
+		}else if(command.equals("clear")) {
+			return getGridText();
+		}else {
+			String[] commandParts = command.split(" ");
+			sheet[Integer.parseInt(commandParts[0].substring(1))][commandParts[0].charAt(0)-65] = commandParts[2];
+			return getGridText();
+		}
 	}
 
 	@Override
@@ -56,7 +65,6 @@ public class Spreadsheet implements Grid{
 			}
 		}
 		grid += "|";
-		System.out.println(grid);
 		return grid;
 	}
 }
