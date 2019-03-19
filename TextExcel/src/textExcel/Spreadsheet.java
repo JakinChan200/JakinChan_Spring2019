@@ -17,6 +17,8 @@ public class Spreadsheet implements Grid{
 	@Override
 	public String processCommand(String command){
 		String[] commandParts = command.split(" ");
+		String[] commandParts2 = command.split(" ", 3);
+
 		if(command.length() <= 3) {
 			return getCell(new SpreadsheetLocation(command)).fullCellText();
 		}else if(command.toLowerCase().contains("clear") && commandParts.length <= 2) {
@@ -27,9 +29,14 @@ public class Spreadsheet implements Grid{
 				emptyGrid();
 			}
 		}else {
-			String[] commandParts2 = command.split(" ", 3);
 			loc = new SpreadsheetLocation(commandParts2[0]);
-			sheet[loc.getRow()][loc.getCol()] = new TextCell(commandParts2[2]);
+			if(command.contains("%")) {
+				sheet[loc.getRow()][loc.getCol()] = new PercentCell(commandParts2[2]);
+			}else if(commandParts2[2].startsWith("(") && commandParts2[2].endsWith(")")) {
+				sheet[loc.getRow()][loc.getCol()] = new FormulaCell(commandParts2[2]);
+			}else {
+				sheet[loc.getRow()][loc.getCol()] = new TextCell(commandParts2[2]);
+			}
 		}
 		return getGridText();
 	}
