@@ -11,6 +11,7 @@ public class TextExcel {
     	boolean runAgain = true;
     	Grid grid = new Spreadsheet();
     	
+    	
     	while(runAgain) {
     		System.out.print("Enter a command: ");
     		String userInput = console.nextLine();
@@ -20,7 +21,8 @@ public class TextExcel {
     			System.out.println("Have a nice day!");
     		}else {
         		System.out.println(grid.processCommand(userInput));
-
+        		TestsALL.Helper th = new TestsALL.Helper();
+        		System.out.println(th.getText());
     		}
     	}
 	}

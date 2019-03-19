@@ -2,13 +2,19 @@ package textExcel;
 
 public class TextCell implements Cell{
 	private String text;
+	private String fullText;
 	
 	public TextCell(String text) {
 		this.text = text;
+		this.fullText = text;
 	}
 	
 	@Override
 	public String abbreviatedCellText() {
+		if(text.startsWith("\"")){
+			text = text.substring(1, text.length() - 1);
+		}
+		
 		if(text.length() < 10) {
 			for(int i = text.length(); i < 10; i++) {
 				text += " ";
@@ -21,7 +27,7 @@ public class TextCell implements Cell{
 
 	@Override
 	public String fullCellText() {
-		return text;
+		return fullText;
 	}
 
 }
