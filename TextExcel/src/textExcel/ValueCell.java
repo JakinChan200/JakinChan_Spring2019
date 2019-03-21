@@ -5,18 +5,29 @@ public class ValueCell extends RealCell{
 	
 	public ValueCell(String input) {
 		super(input);
+		value = getDoubleValue(input);
 	}
 	
 	public double getDoubleValue(String text) {
-		return 5;
+		double decimalText = Double.parseDouble(text);
+		return decimalText;
 	}
 	
-	public String fullCellText(String text) {
-		return text;
+	public String fullCellText() {
+		return value + "";
 	}
 	
 	public String abbreviatedCellText() {
-		value *= 100;
-		return (int)value + "%";
+		value = (double)value;
+		String value2 = value + "";
+		
+		if(value2.length() < 10) {
+			for(int i = value2.length(); i < 10; i++) {
+				value2 += " ";
+			}
+		}else {
+			value2 = value2.substring(0, 10);
+		}
+		return value2 + "";
 	}
 }

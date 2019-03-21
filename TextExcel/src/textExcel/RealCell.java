@@ -4,7 +4,14 @@ public class RealCell implements Cell{
 	private String input;
 	
 	public RealCell(String input) {
-		this.input = input;
+		if(input.contains("%")) {
+			input = input.substring(input.length() - 1);
+			this.input = input;
+		}else if(input.contains("(")) {
+			this.input = input;
+		}else {
+			this.input = input;
+		}
 	}
 	
 	public double getDoubleValue(String input) {

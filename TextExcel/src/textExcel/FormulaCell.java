@@ -8,11 +8,11 @@ public class FormulaCell extends RealCell{
 		this.formula = formula;
 	}
 	
-	public String fullCellText(String text) {
+	public String fullCellText() {
 		return formula;
 	}
 	
-	public String abbreviatedCellText(String text) {
-		return text;
+	public String abbreviatedCellText() {
+		return formula;
 	}
 }
