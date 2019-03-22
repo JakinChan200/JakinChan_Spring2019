@@ -5,7 +5,7 @@ public class RealCell implements Cell{
 	
 	public RealCell(String input) {
 		if(input.contains("%")) {
-			input = input.substring(input.length() - 1);
+			input = input.substring(0, input.length() - 1);
 			this.input = input;
 		}else if(input.contains("(")) {
 			this.input = input;
@@ -20,7 +20,7 @@ public class RealCell implements Cell{
 	
 	@Override
 	public String abbreviatedCellText() {
-		return null;
+		return "no";
 	}
 
 	@Override

@@ -13,6 +13,7 @@ public class FormulaCell extends RealCell{
 	}
 	
 	public String abbreviatedCellText() {
-		return formula;
+		formula = formula + "          ";
+		return formula.substring(0, 10);
 	}
 }
