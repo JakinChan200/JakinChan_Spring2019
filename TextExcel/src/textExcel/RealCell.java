@@ -20,7 +20,7 @@ public class RealCell implements Cell{
 	
 	@Override
 	public String abbreviatedCellText() {
-		return "no";
+		return "Nay, Thee";
 	}
 
 	@Override

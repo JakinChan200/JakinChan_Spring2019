@@ -2,11 +2,9 @@ package textExcel;
 
 public class PercentCell extends RealCell{
 	private double percent;
-	private String fullPercent;
 	
 	public PercentCell(String fullPercent) {
 		super(fullPercent);
-		this.fullPercent = fullPercent;
 		this.percent = getDoubleValue(fullPercent);
 	}
 	
@@ -16,24 +14,20 @@ public class PercentCell extends RealCell{
 	}
 	
 	public String fullCellText() {
-		return fullPercent;
+		percent /= 100;
+		return percent + "";
 	}
 	
 	public String abbreviatedCellText() {
 		String wholeNum;
 		String percent2 = percent + "";
 		if(percent2.contains(".")) {
-			String[] percentParts = percent2.split(".");
-			System.out.println(percentParts.length);
-			for(int i = 0; i < percentParts.length - 1; i++) {
-				System.out.println(percentParts[i]);
-			}
-			//System.out.println(percentParts);
-			wholeNum = "123445678910";//.percentParts[0] + "%         ";
-			wholeNum = wholeNum.substring(0, 9);
+			String[] percentParts = percent2.split("\\."); // apparently the period has a special escape sequence b/c it means something, so you have to use the two backslashes
+			wholeNum = percentParts[0] + "%         ";
+			wholeNum = wholeNum.substring(0, 10);
 		}else {
 			wholeNum = percent + "%          ";
-			wholeNum = wholeNum.substring(0, 9);
+			wholeNum = wholeNum.substring(0, 10);
 		}
 		return wholeNum;
 	}
