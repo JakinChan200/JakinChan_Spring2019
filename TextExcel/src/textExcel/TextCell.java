@@ -1,8 +1,7 @@
 package textExcel;
 
 public class TextCell implements Cell{
-	private String text;
-	private String fullText;
+	private String text, fullText;
 	
 	public TextCell(String text) {
 		this.text = text;
@@ -11,7 +10,7 @@ public class TextCell implements Cell{
 	
 	@Override
 	public String abbreviatedCellText() {
-		if(text.startsWith("\"")){
+		if(text.startsWith("\"")) {
 			text = text.substring(1, text.length() - 1);
 		}
 		

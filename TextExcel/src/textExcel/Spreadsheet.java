@@ -1,36 +1,57 @@
- package textExcel;
+package textExcel;
 
 // Update this file with your own code.
 
 public class Spreadsheet implements Grid{
 	private int numRows, numCols;
 	private Cell[][] sheet;
-	Location loc;
+	Location loc;;
 	
 	public Spreadsheet() {
 		numRows = 20;
 		numCols = 12;
 		sheet = new Cell [numRows][numCols];
-		emptyGrid();		
+		emptyGrid();	
 	}
 	
 	@Override
 	public String processCommand(String command){
+		if(command.equals("")){
+			return "";
+		}
+		
 		String[] commandParts = command.split(" ");
-		if(command.length() <= 3) {
-			loc = new SpreadsheetLocation(command);
-			return sheet[loc.getRow()][loc.getCol()].fullCellText();
+		String[] commandParts2 = command.split(" ", 3);
+		if(command.length() <= 3 && !command.equals("")) {
+			return getCell(new SpreadsheetLocation(command)).fullCellText();
 		}else if(command.toLowerCase().contains("clear") && commandParts.length <= 2) {
-			if(commandParts.length == 2){
+			if(commandParts.length == 2) {
 				loc = new SpreadsheetLocation(commandParts[1]);
 				sheet[loc.getRow()][loc.getCol()] = new EmptyCell();
-			}else{
+			}else {
 				emptyGrid();
 			}
-		}else{
-			String[] commandParts2 = command.split(" ", 3);
+		}else if(commandParts2[1].equals("=")){
 			loc = new SpreadsheetLocation(commandParts2[0]);
-			sheet[loc.getRow()][loc.getCol()] = new TextCell(commandParts2[2]);
+			if(command.contains("%")) {
+				sheet[loc.getRow()][loc.getCol()] = new PercentCell(commandParts2[2]);
+			}else if(commandParts2[2].startsWith("(") && commandParts2[2].endsWith(")")) {
+				sheet[loc.getRow()][loc.getCol()] = new FormulaCell(commandParts2[2]);
+			}else {
+				boolean isText = false;
+				for(int i = 0; i < commandParts2[2].length(); i++){
+					if(commandParts2[2].charAt(i) >= 65 || commandParts2[2].charAt(i) == '"'){
+						sheet[loc.getRow()][loc.getCol()] = new TextCell(commandParts2[2]);
+						isText = true;
+						break;
+					}
+				}
+				if(!isText){
+					sheet[loc.getRow()][loc.getCol()] = new ValueCell(commandParts2[2]);
+				}
+			}
+		}else{
+				System.out.println("unknown command");
 		}
 		return getGridText();
 	}
@@ -58,7 +79,7 @@ public class Spreadsheet implements Grid{
 		}
  		
 		for(int i = 1; i <= numRows; i++) {
-			if((i - 10) < 0) {
+			if(i < 10) {
 				grid += "\n" + i + "  |";
 			}else {
 				grid += "\n" + i + " |";
@@ -71,7 +92,7 @@ public class Spreadsheet implements Grid{
 		return grid + "\n";
 	}
 
-	public void emptyGrid(){
+	public void emptyGrid() {
 		for(int rows = 0; rows < numRows; rows++) {
 			for(int cols = 0; cols < numCols; cols++) {
 				sheet[rows][cols] = new EmptyCell();

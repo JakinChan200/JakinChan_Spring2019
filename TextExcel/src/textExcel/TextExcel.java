@@ -21,8 +21,6 @@ public class TextExcel {
     			System.out.println("Have a nice day!");
     		}else {
         		System.out.println(grid.processCommand(userInput));
-        		TestsALL.Helper th = new TestsALL.Helper();
-        		System.out.println(th.getText());
     		}
     	}
 	}
