@@ -5,7 +5,7 @@ package textExcel;
 public class Spreadsheet implements Grid{
 	private int numRows, numCols;
 	private Cell[][] sheet;
-	Location loc;;
+	Location loc;
 	
 	public Spreadsheet() {
 		numRows = 20;
@@ -21,7 +21,7 @@ public class Spreadsheet implements Grid{
 		}
 		String[] commandParts = command.split(" ");
 		String[] commandParts2 = command.split(" ", 3);
-		if(command.length() <= 3 && !command.equals("")) {
+		if(command.length() <= 3) {
 			return getCell(new SpreadsheetLocation(command)).fullCellText();
 		}else if(command.toLowerCase().contains("clear") && commandParts.length <= 2) {
 			if(commandParts.length == 2) {

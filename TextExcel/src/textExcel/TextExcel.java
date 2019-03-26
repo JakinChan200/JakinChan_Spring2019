@@ -1,8 +1,10 @@
+/*Client Code for TextExcel project
+ * 
+ *@author Jakin Chan
+ *@version March 26 
+ */
 package textExcel;
-//import java.io.FileNotFoundException;
 import java.util.Scanner;
-
-// Update this file with your own code.
 
 public class TextExcel {
 
@@ -10,7 +12,6 @@ public class TextExcel {
 		Scanner console = new Scanner(System.in);
     	boolean runAgain = true;
     	Grid grid = new Spreadsheet();
-    	
     	
     	while(runAgain) {
     		System.out.print("Enter a command: ");
