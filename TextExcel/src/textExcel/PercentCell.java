@@ -22,10 +22,13 @@ public class PercentCell extends RealCell{
 		String wholeNum;
 		String percent2 = percent + "";
 		if(percent2.contains(".")) {
-			wholeNum = (int)percent + "%         ";
+			String[] percentParts = percent2.split("\\."); // apparently the period has a special escape sequence b/c it means something, so you have to use the two backslashes
+			wholeNum = percentParts[0] + "%         ";
+			wholeNum = wholeNum.substring(0, 10);
 		}else {
 			wholeNum = percent + "%          ";
+			wholeNum = wholeNum.substring(0, 10);
 		}
-		return wholeNum.substring(0, 10);
+		return wholeNum;
 	}
 }

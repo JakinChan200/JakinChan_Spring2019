@@ -19,7 +19,6 @@ public class Spreadsheet implements Grid{
 		if(command.equals("")){
 			return "";
 		}
-		
 		String[] commandParts = command.split(" ");
 		String[] commandParts2 = command.split(" ", 3);
 		if(command.length() <= 3 && !command.equals("")) {

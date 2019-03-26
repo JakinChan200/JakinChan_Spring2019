@@ -21,5 +21,6 @@ public class ValueCell extends RealCell{
 	public String abbreviatedCellText() {
 		String value2 = value + "          ";
 		return value2.substring(0, 10);
+
 	}
 }
