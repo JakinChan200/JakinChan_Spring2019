@@ -1,8 +1,8 @@
-/*Client Code for TextExcel project
- * 
- *@author Jakin Chan
- *@version March 26 
+/*
+ * @author Jakin Chan
+ * @version 29 March 2019
  */
+
 package textExcel;
 import java.util.Scanner;
 

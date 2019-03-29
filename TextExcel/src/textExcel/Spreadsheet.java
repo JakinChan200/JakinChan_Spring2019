@@ -1,7 +1,8 @@
+/*
+ * @author Jakin Chan
+ * @version 29 March 2019
+ */
 package textExcel;
-
-// Update this file with your own code.
-
 public class Spreadsheet implements Grid{
 	private int numRows, numCols;
 	private Cell[][] sheet;
