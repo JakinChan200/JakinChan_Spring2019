@@ -2,10 +2,12 @@ package textExcel;
 
 public class FormulaCell extends RealCell{
 	private String formula;
+	Cell[][] sheet;
 	
-	public FormulaCell(String formula) {
+	public FormulaCell(String formula, Cell[][] sheet) {
 		super(formula);
 		this.formula = formula;
+		this.sheet = sheet;
 	}
 	
 	public double getDoubleValue(String equation){
@@ -27,23 +29,24 @@ public class FormulaCell extends RealCell{
 		double finalValue = firstValue;
 		switch(operator){
 			case "+":
-				finalValue += Double.parseDouble(secondValue);
+				finalValue += getValue(secondValue);
 				break;
 			case "-":
-				finalValue -= Double.parseDouble(secondValue);
+				finalValue -= getValue(secondValue);
 				break;
 			case "*":
-				finalValue *= Double.parseDouble(secondValue);
+				finalValue *= getValue(secondValue);
 				break;
 			default:
-				finalValue /= Double.parseDouble(secondValue);
+				finalValue /= getValue(secondValue);
 		}
 		return finalValue;
 	}
 	
 	public double getValue(String value) {
 		if(value.charAt(0) >= 65) {
-			sheet[][];
+			Location loc = new SpreadsheetLocation(value);
+			return Double.parseDouble(sheet[loc.getRow()][loc.getCol()].fullCellText());
 		}else {
 			return Double.parseDouble(value);
 		}

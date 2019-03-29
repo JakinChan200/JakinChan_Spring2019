@@ -35,7 +35,7 @@ public class Spreadsheet implements Grid{
 			if(command.contains("%")) {
 				sheet[loc.getRow()][loc.getCol()] = new PercentCell(commandParts2[2]);
 			}else if(commandParts2[2].startsWith("(") && commandParts2[2].endsWith(")")) {
-				sheet[loc.getRow()][loc.getCol()] = new FormulaCell(commandParts2[2]);
+				sheet[loc.getRow()][loc.getCol()] = new FormulaCell(commandParts2[2], sheet);
 			}else {
 				boolean isText = false;
 				for(int i = 0; i < commandParts2[2].length(); i++){
