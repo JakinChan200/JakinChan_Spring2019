@@ -5,7 +5,7 @@
 
 package textExcel;
 
-public class TextCell implements Cell{
+public class TextCell implements Cell, Comparable<Cell>{
 	private String text, fullText;
 	
 	public TextCell(String text) {
@@ -15,6 +15,7 @@ public class TextCell implements Cell{
 	
 	@Override
 	public String abbreviatedCellText() {
+		System.out.println("no");
 		if(text.startsWith("\"")) {
 			text = text.substring(1, text.length() - 1);
 		}
@@ -32,6 +33,11 @@ public class TextCell implements Cell{
 	@Override
 	public String fullCellText() {
 		return fullText;
+	}
+
+	@Override
+	public int compareTo(Cell o) {
+		return 0;
 	}
 
 }

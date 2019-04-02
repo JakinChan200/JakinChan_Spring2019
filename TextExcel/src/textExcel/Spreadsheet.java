@@ -3,6 +3,9 @@
  * @version 29 March 2019
  */
 package textExcel;
+
+import java.util.ArrayList;
+
 public class Spreadsheet implements Grid{
 	private int numRows, numCols;
 	private Cell[][] sheet;
@@ -50,6 +53,9 @@ public class Spreadsheet implements Grid{
 					sheet[loc.getRow()][loc.getCol()] = new ValueCell(commandParts2[2]);
 				}
 			}
+		}else if(commandParts[0].equalsIgnoreCase("sorta") || commandParts[0].equalsIgnoreCase("sortd")){
+			sortCells(commandParts);
+			return getGridText();
 		}else{
 				System.out.println("unknown command");
 		}
@@ -96,6 +102,25 @@ public class Spreadsheet implements Grid{
 		for(int rows = 0; rows < numRows; rows++) {
 			for(int cols = 0; cols < numCols; cols++) {
 				sheet[rows][cols] = new EmptyCell();
+			}
+		}
+	}
+	
+	public void sortCells(String[] command){
+		ArrayList<Cell> list = new ArrayList<Cell>();
+		String[] valueBoundaries = command[1].split("-");
+		Location beginningLoc = new SpreadsheetLocation(valueBoundaries[0]);
+		Location endingLoc = new SpreadsheetLocation(valueBoundaries[1]);
+		for(int row = beginningLoc.getRow(); row <= endingLoc.getRow(); row++){
+			for(int col = beginningLoc.getCol(); col <= endingLoc.getCol(); col++){
+				list.add(sheet[row][col]);
+			}
+		}
+		for(int i = 0; i < list.size() - 1; i++){
+			if(command[0].equalsIgnoreCase("sorta")){
+				
+			}else{
+			
 			}
 		}
 	}

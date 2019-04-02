@@ -1,16 +1,17 @@
 package textExcel;
 
-public class RealCell implements Cell{
-	private String input;
+public class RealCell implements Cell, Comparable<Cell>{
+	private double input;
+	private String value;
 	
 	public RealCell(String input) {
 		if(input.contains("%")) {
 			input = input.substring(0, input.length() - 1);
-			this.input = input;
+			this.input = getDoubleValue(input);
 		}else if(input.contains("(")) {
-			this.input = input;
+			this.value = input;
 		}else {
-			this.input = input;
+			this.input = getDoubleValue(input);
 		}
 	}
 	
@@ -25,7 +26,12 @@ public class RealCell implements Cell{
 
 	@Override
 	public String fullCellText() {
-		return input;
+		return input + "";
+	}
+
+	@Override
+	public int compareTo(Cell o) {
+		return 0;
 	}
 
 }
