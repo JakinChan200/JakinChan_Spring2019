@@ -111,16 +111,20 @@ public class Spreadsheet implements Grid{
 		String[] valueBoundaries = command[1].split("-");
 		Location beginningLoc = new SpreadsheetLocation(valueBoundaries[0]);
 		Location endingLoc = new SpreadsheetLocation(valueBoundaries[1]);
-		for(int row = beginningLoc.getRow(); row <= endingLoc.getRow(); row++){
-			for(int col = beginningLoc.getCol(); col <= endingLoc.getCol(); col++){
-				list.add(sheet[row][col]);
-			}
-		}
-		for(int i = 0; i < list.size() - 1; i++){
-			if(command[0].equalsIgnoreCase("sorta")){
-				
-			}else{
-			
+		list.add(sheet[beginningLoc.getRow()][beginningLoc.getCol()]);
+		for(int row = beginningLoc.getRow() + 1; row <= endingLoc.getRow(); row++){
+			for(int col = beginningLoc.getCol() + 1; col <= endingLoc.getCol(); col++){
+				if(command[0].equalsIgnoreCase("sorta")){
+					for(int i = 0; i < list.size() - 1; i++){
+						if(sheet[row][col].compareTo(list.get(i)) < 1){
+							
+						}
+					}
+				}else{
+					for(int i = 0; i < list.size() - 1; i++){
+						
+					}
+				}
 			}
 		}
 	}

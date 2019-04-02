@@ -15,7 +15,6 @@ public class TextCell implements Cell, Comparable<Cell>{
 	
 	@Override
 	public String abbreviatedCellText() {
-		System.out.println("no");
 		if(text.startsWith("\"")) {
 			text = text.substring(1, text.length() - 1);
 		}
