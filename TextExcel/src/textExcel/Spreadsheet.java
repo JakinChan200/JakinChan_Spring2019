@@ -116,13 +116,21 @@ public class Spreadsheet implements Grid{
 			for(int col = beginningLoc.getCol() + 1; col <= endingLoc.getCol(); col++){
 				if(command[0].equalsIgnoreCase("sorta")){
 					for(int i = 0; i < list.size() - 1; i++){
-						if(sheet[row][col].compareTo(list.get(i)) < 1){
-							
+						Cell tempCell = sheet[loc.getRow()][loc.getCol()];
+						if(tempCell.compareTo(list.get(i)) <= 0){
+							list.add(i, sheet[row][col]);
+							break;
+						}else if(i == list.size() - 1){
+							list.add(sheet[row][col]);
 						}
 					}
 				}else{
 					for(int i = 0; i < list.size() - 1; i++){
-						
+						Cell tempCell = sheet[loc.getRow()][loc.getCol()];
+						if(tempCell.compareTo(list.get(i)) <= 0){
+							list.add(i, sheet[row][col]);
+							break;
+						}
 					}
 				}
 			}

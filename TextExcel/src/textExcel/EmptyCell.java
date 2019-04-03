@@ -18,4 +18,9 @@ public class EmptyCell implements Cell{
 	public String fullCellText() {
 		return "";
 	}
+
+	@Override
+	public int compareTo(Cell cell) {
+		return 0;
+	}
 }
