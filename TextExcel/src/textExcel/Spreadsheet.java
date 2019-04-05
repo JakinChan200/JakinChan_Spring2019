@@ -37,7 +37,7 @@ public class Spreadsheet implements Grid{
 		}else if(commandParts2[1].equals("=")){
 			loc = new SpreadsheetLocation(commandParts2[0]);
 			if(command.contains("%")) {
-				sheet[loc.getRow()][loc.getCol()] = new PercentCell(commandParts2[2]);
+				sheet[loc.getRow()][loc.getCol()] = new PercentCell(commandParts2[2], sheet);
 			}else if(commandParts2[2].startsWith("(") && commandParts2[2].endsWith(")")) {
 				sheet[loc.getRow()][loc.getCol()] = new FormulaCell(commandParts2[2], sheet);
 			}else {
@@ -50,7 +50,7 @@ public class Spreadsheet implements Grid{
 					}
 				}
 				if(!isText){
-					sheet[loc.getRow()][loc.getCol()] = new ValueCell(commandParts2[2]);
+					sheet[loc.getRow()][loc.getCol()] = new ValueCell(commandParts2[2], sheet);
 				}
 			}
 		}else if(commandParts[0].equalsIgnoreCase("sorta") || commandParts[0].equalsIgnoreCase("sortd")){

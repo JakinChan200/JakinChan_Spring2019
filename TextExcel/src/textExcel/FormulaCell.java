@@ -7,12 +7,10 @@ package textExcel;
 
 public class FormulaCell extends RealCell{
 	private String formula;
-	Cell[][] sheet;
 	
 	public FormulaCell(String formula, Cell[][] sheet) {
-		super(formula);
+		super(formula, sheet);
 		this.formula = formula;
-		this.sheet = sheet;
 	}
 	
 	public double getDoubleValue(String equation){
@@ -47,21 +45,20 @@ public class FormulaCell extends RealCell{
 	
 	
 	public double operation(double firstValue, String operator, String secondValue) {
-		double finalValue = firstValue;
 		switch(operator){
 			case "+":
-				finalValue += getValue(secondValue);
+				firstValue += getValue(secondValue);
 				break;
 			case "-":
-				finalValue -= getValue(secondValue);
+				firstValue -= getValue(secondValue);
 				break;
 			case "*":
-				finalValue *= getValue(secondValue);
+				firstValue *= getValue(secondValue);
 				break;
 			default:
-				finalValue /= getValue(secondValue);
+				firstValue /= getValue(secondValue);
 		}
-		return finalValue;
+		return firstValue;
 	}
 	
 	public double getValue(String value) {

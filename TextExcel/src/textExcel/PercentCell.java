@@ -3,8 +3,8 @@ package textExcel;
 public class PercentCell extends RealCell{
 	private double percent;
 	
-	public PercentCell(String fullPercent) {
-		super(fullPercent);
+	public PercentCell(String fullPercent, Cell[][] sheet) {
+		super(fullPercent, sheet);
 		this.percent = getDoubleValue(fullPercent);
 	}
 	

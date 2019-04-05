@@ -4,8 +4,8 @@ public class ValueCell extends RealCell{
 	private double value;
 	private String input;
 	
-	public ValueCell(String input) {
-		super(input);
+	public ValueCell(String input, Cell[][] sheet) {
+		super(input, sheet);
 		this.input = input;
 		value = getDoubleValue(input);
 	}
