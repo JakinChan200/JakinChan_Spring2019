@@ -6,32 +6,25 @@
 package textExcel;
 
 public class TextCell implements Cell, Comparable<Cell>{
-	private String text, fullText;
+	private String text;
 	
 	public TextCell(String text) {
 		this.text = text;
-		this.fullText = text;
 	}
 	
 	@Override
 	public String abbreviatedCellText() {
+		String abbrevText = text;
 		if(text.startsWith("\"")) {
-			text = text.substring(1, text.length() - 1);
+			abbrevText = text.substring(1, text.length() - 1);
 		}
-		
-		if(text.length() < 10) {
-			for(int i = text.length(); i < 10; i++) {
-				text += " ";
-			}
-		}else {
-			text = text.substring(0, 10);
-		}
-		return text;
+		abbrevText += "           ";
+		return abbrevText.substring(0, 10);
 	}
 
 	@Override
 	public String fullCellText() {
-		return fullText;
+		return text;
 	}
 
 	@Override

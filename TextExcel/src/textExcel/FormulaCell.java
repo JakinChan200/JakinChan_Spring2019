@@ -6,11 +6,9 @@
 package textExcel;
 
 public class FormulaCell extends RealCell{
-	private String formula;
 	
 	public FormulaCell(String formula, Cell[][] sheet) {
 		super(formula, sheet);
-		this.formula = formula;
 	}
 	
 	public double getDoubleValue(String equation){
@@ -71,11 +69,11 @@ public class FormulaCell extends RealCell{
 	}
 	
 	public String fullCellText() {
-		return formula;
+		return origUserInput;
 	}
 	
 	public String abbreviatedCellText() {
-		String formula2 = getDoubleValue(formula) + "          ";
+		String formula2 = getDoubleValue(origUserInput) + "          ";
 		return formula2.substring(0, 10);
 	}
 }

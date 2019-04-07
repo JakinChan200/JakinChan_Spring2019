@@ -114,10 +114,11 @@ public class Spreadsheet implements Grid{
 		list.add(sheet[beginningLoc.getRow()][beginningLoc.getCol()]);
 		for(int row = beginningLoc.getRow() + 1; row <= endingLoc.getRow(); row++){
 			for(int col = beginningLoc.getCol() + 1; col <= endingLoc.getCol(); col++){
+				String tempCellName = ((char)(col + 'A') + row) + "";
+				Location tempLoc = new SpreadsheetLocation(tempCellName);
 				if(command[0].equalsIgnoreCase("sorta")){
 					for(int i = 0; i < list.size() - 1; i++){
-						Cell tempCell = sheet[loc.getRow()][loc.getCol()];
-						if(tempCell.compareTo(list.get(i)) <= 0){
+						if(getCell(tempLoc).compareTo(list.get(i)) <= 0){
 							list.add(i, sheet[row][col]);
 							break;
 						}else if(i == list.size() - 1){
@@ -126,10 +127,11 @@ public class Spreadsheet implements Grid{
 					}
 				}else{
 					for(int i = 0; i < list.size() - 1; i++){
-						Cell tempCell = sheet[loc.getRow()][loc.getCol()];
-						if(tempCell.compareTo(list.get(i)) <= 0){
+						if(getCell(tempLoc).compareTo(list.get(i)) >= 0){
 							list.add(i, sheet[row][col]);
 							break;
+						}else if(i == list.size() - 1){
+							list.add(sheet[row][col]);
 						}
 					}
 				}

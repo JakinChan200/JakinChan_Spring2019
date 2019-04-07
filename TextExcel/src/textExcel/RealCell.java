@@ -1,18 +1,19 @@
 package textExcel;
 
 public class RealCell implements Cell, Comparable<Cell>{
-	private double input;
+	String origUserInput;
+	double cellValue;
 	Cell[][] sheet;
 	
 	public RealCell(String input, Cell[][] sheet) {
+		origUserInput = input;
 		this.sheet = sheet;
 		if(input.contains("%")) {
-			input = input.substring(0, input.length() - 1);
-			this.input = getDoubleValue(input);
+			this.cellValue = getDoubleValue(input);
 		}else if(input.contains("(")) {
-			this.input = getDoubleValue(input);
+			this.cellValue = getDoubleValue(input);
 		}else {
-			this.input = getDoubleValue(input);
+			this.cellValue = getDoubleValue(input);
 		}
 	}
 	
@@ -22,8 +23,8 @@ public class RealCell implements Cell, Comparable<Cell>{
 	
 	@Override
 	public String abbreviatedCellText() {
-		String formula2 = input + "          ";
-		return formula2.substring(0, 10);
+		String fullCellText = cellValue + "          ";
+		return fullCellText.substring(0, 10);
 	}
 
 	@Override
