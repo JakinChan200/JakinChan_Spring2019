@@ -8,13 +8,7 @@ public class RealCell implements Cell, Comparable<Cell>{
 	public RealCell(String input, Cell[][] sheet) {
 		origUserInput = input;
 		this.sheet = sheet;
-		if(input.contains("%")) {
-			this.cellValue = getDoubleValue(input);
-		}else if(input.contains("(")) {
-			this.cellValue = getDoubleValue(input);
-		}else {
-			this.cellValue = getDoubleValue(input);
-		}
+		this.cellValue = getDoubleValue(input);
 	}
 	
 	public double getDoubleValue(String input) {
@@ -31,13 +25,20 @@ public class RealCell implements Cell, Comparable<Cell>{
 	public String fullCellText() {
 		return origUserInput;
 	}
+	
+	public double getCellValue() {
+		return cellValue;
+	}
 
 	@Override
 	public int compareTo(Cell cell) {
-		if(cellValue > cell.getCellValue()){
-			
+		if(cellValue > ((RealCell) cell).getCellValue()){
+			return 1;
+		}else if(cellValue < ((RealCell) cell).getCellValue()) {
+			return -1;
+		}else {
+			return 0;
 		}
-		return 0;
 	}
 
 }

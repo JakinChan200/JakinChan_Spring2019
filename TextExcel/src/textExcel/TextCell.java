@@ -29,7 +29,9 @@ public class TextCell implements Cell, Comparable<Cell>{
 
 	@Override
 	public int compareTo(Cell o) {
+		/*for(int i = 0; i < t) {
+			
+		}*/
 		return 0;
 	}
-
 }
