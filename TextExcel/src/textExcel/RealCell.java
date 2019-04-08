@@ -29,11 +29,14 @@ public class RealCell implements Cell, Comparable<Cell>{
 
 	@Override
 	public String fullCellText() {
-		return "Nay, Thee";
+		return origUserInput;
 	}
 
 	@Override
-	public int compareTo(Cell o) {
+	public int compareTo(Cell cell) {
+		if(cellValue > cell.getCellValue()){
+			
+		}
 		return 0;
 	}
 
