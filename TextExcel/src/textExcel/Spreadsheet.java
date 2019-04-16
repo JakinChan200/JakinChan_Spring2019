@@ -137,6 +137,7 @@ public class Spreadsheet implements Grid{
 				}
 			}
 		}
+		int index = 0;
 		for(int row = beginningLoc.getRow() + 1; row <= endingLoc.getRow(); row++){
 			for(int col = beginningLoc.getCol() + 1; col <= endingLoc.getCol(); col++){
 				
